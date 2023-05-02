@@ -79,7 +79,15 @@ In these inferential results the P value is 2.364e-12 which is a very small numb
 The observed results show that there is a significant difference between whether or not males are getting Covid if they are vaccinated or not. 245 of those who got the placebo got Covid while only 113 males who got vaccinated got Covid. The expected results suggested that these numbers would be close but in reality they aren't. This aligns with the previous data we saw being that the vaccine does have a positive affect on males and lowers their chances of getting Covid. The odds ratio 2.17 is right in between the confidence interval 1.73-2.75
 
 
+```{r}
+low=(guysfish$conf.int[1]/(guysfish$conf.int[1] +1))*100
+hi=(guysfish$conf.int[2]/(guysfish$conf.int[2] +1))*100
+options(digits=2)
+```
 
+## Effectiveness Confidence Interval `r low`  to `r hi`
+
+The data above shows the effectiveness for the vaccine for guys. We know that if the effectiveness is above 50% then the vaccine can be deemed effective. Since out interval is 63.4 to 73.35 we can say that the vaccine is effective for guys.
 
 
 
