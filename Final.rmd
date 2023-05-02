@@ -42,6 +42,37 @@ barchartGC(~infected + treatment,data=guy, type="percent")
 
 This bar plot represents males relationship between treatment and whether or not they were infected with Covid-19. In the percent graph we can see that close to 70% of placebo participants got Covid compared to about 30% who were vaccinated and got Covid. Those who were vaccinated and those who got a placebo are both at about 50% in regards to being "OK" (not getting Covid). In the frequency graph both groups had relatively the same frequency of being "OK" (not contracting Covid). While those who got a placebo were slightly higher in regards to getting Covid which was at about 300. In contrast those who were vaccinated were about about 100 in regards to getting Covid.
 
+
+### Numerical results
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=guy)
+rowPerc(table1)
+colPerc(table1)
+```
+
+Through the numerical results we can see that 68.44% of placebo participants got Covid while only 31.56% of vaccine participants got Covid. Those who were vaccinated and got Covid are less than half of those who got the placebo and still got infected. While 49.88% of placebo participants didn't get Covid and 50.12% of vaccine participants didn't get Covid. These numbers are very close like seen and expected in the bar plot.
+
+In regards to those who received the placebo only 2.69% got Covid while 97.31% were "OK" (not infected). Those who got the vaccine only had 1.25% contraction rate of Covid while 98.75% were "OK". The difference between whether or not you got vaccinated in these statistics doesn't seem to have really any much effect on whether or not you contract Covid.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Females
 
 
