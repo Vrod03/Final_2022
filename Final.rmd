@@ -104,9 +104,15 @@ barchartGC(~infected + treatment,data=gal, type="percent")
 From the percent data we can see that gals had a higher chance of getting Covid if vaccinated in compared to the women who received the placebo. About 56% of vaccinated women got Covid while about 45% of placebo participates got Covid. The percent and frequency of women who were okay was relatively the same regardless if they were vaccinated or not. The frequency of women who were vaccinated and got Covid was slightly larger (about 200) than those who got the placebo (about 100).
 
 
+### Numerical results
 
+```{r}
+table1 <- xtabs(~infected + treatment, data=gal)
+rowPerc(table1)
+colPerc(table1)
+```
 
-
+From the numerical results we can see that women who were vaccinated and got Covid was 57 compared to 50 who were "OK". Women who got the placebo and still got Covid was 43 compared to 50 who were "OK". We can see that those women who got vaccinated, it actually ended up hurting them because they contracted Covid more. We can see this being proven again in the lower half of data results. Women who had the placebo got Covid 1.7% while women who were vaccinated got Covid 2.3%.
 
 
 
