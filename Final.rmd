@@ -30,6 +30,15 @@ Druguser = filter(FinalData, DrugUser =="yes")
 
 A new  preventative vaccine (covid921) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of subpopulations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbage when referencing p-values in conclusions.
 
+
+# Coding details
+
+
+
+
+
+
+
 ## Males
 
 ###Barplot
@@ -56,13 +65,18 @@ Through the numerical results we can see that 68.44% of placebo participants got
 In regards to those who received the placebo only 2.69% got Covid while 97.31% were "OK" (not infected). Those who got the vaccine only had 1.25% contraction rate of Covid while 98.75% were "OK". The difference between whether or not you got vaccinated in these statistics doesn't seem to have really any much effect on whether or not you contract Covid.
 
 
+### Inferential 
 
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+guysfish <- fisher.test(table1)
+guysfish
+```
 
+In these inferential results the P value is 2.364e-12 which is a very small number. This means that these results are not likely to occur at random.
 
-
-
-
-
+The observed results show that there is a significant difference between whether or not males are getting Covid if they are vaccinated or not. 245 of those who got the placebo got Covid while only 113 males who got vaccinated got Covid. The expected results suggested that these numbers would be close but in reality they aren't. This aligns with the previous data we saw being that the vaccine does have a positive affect on males and lowers their chances of getting Covid. The odds ratio 2.17 is right in between the confidence interval 1.73-2.75
 
 
 
