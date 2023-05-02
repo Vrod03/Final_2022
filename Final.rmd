@@ -18,6 +18,12 @@ FinalDat <-read.csv(file="finalFall2022.csv",header=TRUE)
 FinalData <- FinalDat  %>% select(-one_of("X"))
 FinalData <- FinalData %>%
 mutate(across(where(is.character), as.factor))
+FinalData$treatment <- relevel(FinalData$treatment,ref="placebo")
+#FinalData$infected <- relevel(FinalData$infected,ref="OK")
+guy = filter(FinalData, sex =="M")
+gal = filter(FinalData, sex =="F")
+gay = filter(FinalData, LGBTQ =="gay")
+Druguser = filter(FinalData, DrugUser =="yes")
 ```
 
 # Introduction
@@ -26,15 +32,31 @@ A new  preventative vaccine (covid921) is under test in clinical trials. Given t
 
 ## Males
 
+###Barplot
+
+```{r}
+barchartGC(~infected + treatment,data=guy)
+barchartGC(~infected + treatment,data=guy, type="percent")
+
+```
+
+This bar plot represents males relationship between treatment and whether or not they were infected with Covid-19. In the percent graph we can see that close to 70% of placebo participants got Covid compared to about 30% who were vaccinated and got Covid. Those who were vaccinated and those who got a placebo are both at about 50% in regards to being "OK" (not getting Covid). In the frequency graph both groups had relatively the same frequency of being "OK" (not contracting Covid). While those who got a placebo were slightly higher in regards to getting Covid which was at about 300. In contrast those who were vaccinated were about about 100 in regards to getting Covid.
 
 ## Females
+
+
 
 
 ## LGBTQ
 
 
 
+
 ## Druggies
 
 
+
+
 # Overall Results and Conclusions
+
+
