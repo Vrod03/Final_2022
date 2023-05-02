@@ -90,12 +90,41 @@ options(digits=2)
 The data above shows the effectiveness for the vaccine for guys. We know that if the effectiveness is above 50% then the vaccine can be deemed effective. Since out interval is 63.4 to 73.35 we can say that the vaccine is effective for guys.
 
 
-
-
-
-
-
 ## Females
+
+
+###Barplot
+
+```{r}
+barchartGC(~infected + treatment,data=gal)
+barchartGC(~infected + treatment,data=gal, type="percent")
+
+```
+
+From the percent data we can see that gals had a higher chance of getting Covid if vaccinated in compared to the women who received the placebo. About 56% of vaccinated women got Covid while about 45% of placebo participates got Covid. The percent and frequency of women who were okay was relatively the same regardless if they were vaccinated or not. The frequency of women who were vaccinated and got Covid was slightly larger (about 200) than those who got the placebo (about 100).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
