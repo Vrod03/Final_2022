@@ -142,13 +142,34 @@ options(digits=2)
 
 ## Effectiveness Confidence Interval `r low`  to `r hi`
 
-In regards to the effectiveness of a vaccine we want our confidence interval to be over 50% for the vaccine to be deemed effective. Yet the womens confidence interval is from 37.34 to 47.86 which means that this vaccine is not effective for women.
-
-
+In regards to the effectiveness of a vaccine we want our confidence interval to be over 50% for the vaccine to be deemed effective. Yet the women's confidence interval is from 37.34 to 47.86 which means that this vaccine is not effective for women.
 
 
 
 ## LGBTQ
+
+### Barplot
+
+```{r}
+barchartGC(~infected + treatment,data=gay)
+barchartGC(~infected + treatment,data=gay, type="percent")
+
+```
+
+From the percent bar plot we can see that gays that got vaccinated have gotten Covid significantly more than those who got the placebo. About 90% of vaccinated gays got Covid while about 15% on placebo gays got Covid. In regards to those who were "OK" and vaccinated were slightly more than those who got the placebo. The frequency at which placebo gays got Covid is very small compared to those who were vaccinated. In regards to those who were "OK" the vaccinated people were slightly higher than those who were not.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
