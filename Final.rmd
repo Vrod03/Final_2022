@@ -159,8 +159,13 @@ barchartGC(~infected + treatment,data=gay, type="percent")
 From the percent bar plot we can see that gays that got vaccinated have gotten Covid significantly more than those who got the placebo. About 90% of vaccinated gays got Covid while about 15% on placebo gays got Covid. In regards to those who were "OK" and vaccinated were slightly more than those who got the placebo. The frequency at which placebo gays got Covid is very small compared to those who were vaccinated. In regards to those who were "OK" the vaccinated people were slightly higher than those who were not.
 
 
+### Numerical results
 
-
+```{r}
+table1 <- xtabs(~infected + treatment, data=gay)
+rowPerc(table1)
+colPerc(table1)
+```
 
 
 
