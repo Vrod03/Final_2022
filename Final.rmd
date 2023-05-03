@@ -76,7 +76,7 @@ guysfish
 
 In these inferential results the P value is 2.364e-12 which is a very small number. This means that these results are not likely to occur at random.
 
-The observed results show that there is a significant difference between whether or not males are getting Covid if they are vaccinated or not. 245 of those who got the placebo got Covid while only 113 males who got vaccinated got Covid. The expected results suggested that these numbers would be close but in reality they aren't. This aligns with the previous data we saw being that the vaccine does have a positive affect on males and lowers their chances of getting Covid. The odds ratio 2.17 is right in between the confidence interval 1.73-2.75
+The observed results show that there is a significant difference between whether or not males are getting Covid if they are vaccinated or not. 245 of those who got the placebo got Covid while only 113 males who got vaccinated got Covid. The expected results suggested that these numbers would be close but in reality they aren't. This aligns with the previous data we saw being that the vaccine does have a positive affect on males and lowers their chances of getting Covid. The odds ratio 2.17 is right in between the confidence interval 1.73-2.75.
 
 
 ```{r}
@@ -115,21 +115,34 @@ colPerc(table1)
 From the numerical results we can see that women who were vaccinated and got Covid was 57 compared to 50 who were "OK". Women who got the placebo and still got Covid was 43 compared to 50 who were "OK". We can see that those women who got vaccinated, it actually ended up hurting them because they contracted Covid more. We can see this being proven again in the lower half of data results. Women who had the placebo got Covid 1.7% while women who were vaccinated got Covid 2.3%.
 
 
+### Inferential 
 
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+galsfish <- fisher.test(table1)
+galsfish
+```
 
+From the inferential results the p value is 0.005 which is small meaning that the expected results are very unlikely to happen.
 
+The observed results show us that 155 women who got the placebo ended up getting Covid while 207 women who were vaccinated got Covid. The expected results were supposed to be an even amount of both sides were going to contract Covid. The odds ratio in the Fisher test is 0.74 which is almost exactly in between the confidence interval which is 0.60-0.92. This all aligns with the data from the pervious charts.
 
+```{r}
+effect <- galsfish$p.value/(galsfish$p.value +1)
+effectivenessgal = galsfish$estimate/(galsfish$estimate +1)*100
+print(effectivenessgal)
+```
 
+```{r}
+low=(galsfish$conf.int[1]/(galsfish$conf.int[1] +1))*100
+hi=(galsfish$conf.int[2]/(galsfish$conf.int[2] +1))*100
+options(digits=2)
+```
 
+## Effectiveness Confidence Interval `r low`  to `r hi`
 
-
-
-
-
-
-
-
-
+In regards to the effectiveness of a vaccine we want our confidence interval to be over 50% for the vaccine to be deemed effective. Yet the womens confidence interval is from 37.34 to 47.86 which means that this vaccine is not effective for women.
 
 
 
