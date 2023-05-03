@@ -167,7 +167,7 @@ rowPerc(table1)
 colPerc(table1)
 ```
 
-
+For this data we can see that 87 vaccinated gays got Covid and 51 did not. While only 13 placebo gays got Covid and 49 did not. Those who were vaccinated were much more likely to get Covid. 3.3% out of 96.7% of vaccinated participants got Covid. 0.54% out of 99.46% of placebo participants didn't get Covid.
 
 
 
