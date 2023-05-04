@@ -219,6 +219,15 @@ rowPerc(table1)
 colPerc(table1)
 ```
 
+According to the numerical results we are seeing the same trend. In regards to the placebo drug users 17 got Covid while 49 are "OK". In regards to the vaccinated drug users 83 got Covid while 51 were "OK".  Placebo vaccine drug users got Covid 0.81% of the time compared to  99.19% were "OK". Vaccinated drug users got Covid 3.8% of the time compared to 96.2% that were "OK". We are continuing to see that vaccinated drug users are more likely to get Covid compared to placebo participants.
+
+
+
+
+
+
+
+
 
 
 # Overall Results and Conclusions
