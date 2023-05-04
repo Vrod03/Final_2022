@@ -36,7 +36,12 @@ A new  preventative vaccine (covid921) is under test in clinical trials. Given t
 I changed the character variable from FinalData to factor Variables by using :
 FinalData<- FinalData %>%
 mutate(across(where(is.character), as.factor))
-Then I had to make sure that all the subcategories of guys, gals, gays and drug user separate so that they could be assessed individually. I stored them as separate values and this can be seen when the assignment is knitted. By separating them I was able to see if the vaccine was effective for each subcategory.
+Then I had to make sure that all the subcategories of guys, gals, gays and drug user separate so that they could be assessed individually by using:
+guy = filter(FinalData, sex =="M")
+gal = filter(FinalData, sex =="F")
+gay = filter(FinalData, LGBTQ =="gay")
+Druguser = filter(FinalData, DrugUser =="yes")
+I stored them as separate values and this can be seen when the assignment is knitted. By separating them I was able to see if the vaccine was effective for each subcategory.
 
 
 ## Males
@@ -49,7 +54,7 @@ barchartGC(~infected + treatment,data=guy, type="percent")
 
 ```
 
-This bar plot represents males relationship between treatment and whether or not they were infected with Covid-19. In the percent graph we can see that close to 70% of placebo participants got Covid compared to about 30% who were vaccinated and got Covid. Those who were vaccinated and those who got a placebo are both at about 50% in regards to being "OK" (not getting Covid). In the frequency graph both groups had relatively the same frequency of being "OK" (not contracting Covid). While those who got a placebo were slightly higher in regards to getting Covid which was at about 300. In contrast those who were vaccinated were about about 100 in regards to getting Covid.
+This bar plot represents males relationship between treatment and whether or not they were infected with Covid-19. In the percent graph we can see that close to 70% of placebo participants got Covid compared to about 30% who were vaccinated and got Covid. Those who were vaccinated and those who got a placebo are both at about 50% in regards to being "OK" (not getting Covid). In the frequency graph both groups had relatively the same frequency of being "OK" (not contracting Covid). While those who got a placebo were slightly higher in regards to getting Covid which was at about 300. In contrast those who were vaccinated were at about 100 in regards to getting Covid.
 
 
 ### Numerical results
@@ -60,9 +65,9 @@ rowPerc(table1)
 colPerc(table1)
 ```
 
-Through the numerical results we can see that 68.44% of placebo participants got Covid while only 31.56% of vaccine participants got Covid. Those who were vaccinated and got Covid are less than half of those who got the placebo and still got infected. While 49.88% of placebo participants didn't get Covid and 50.12% of vaccine participants didn't get Covid. These numbers are very close like seen and expected in the bar plot.
+Through the numerical results we can see that 68.44% of placebo participants got Covid while only 31.56% of vaccine participants got Covid. The percent of those who were vaccinated and got Covid was less than half compared to those who got the placebo and still got infected. While 49.88% of placebo participants didn't get Covid and 50.12% of vaccine participants didn't get Covid. These numbers are very close like seen in the bar plot.
 
-In regards to those who received the placebo only 2.69% got Covid while 97.31% were "OK" (not infected). Those who got the vaccine only had 1.25% contraction rate of Covid while 98.75% were "OK". The difference between whether or not you got vaccinated in these statistics doesn't seem to have really any much effect on whether or not you contract Covid.
+In regards to those who received the placebo only 2.69% got Covid while 97.31% were "OK" (not infected). Those who got the vaccine only had 1.25% contraction rate of Covid while 98.75% were "OK". The difference between whether or not you got vaccinated in the statistics on the bottom doesn't seem to have too much of an effect on whether or not the participants contracted Covid.
 
 
 ### Inferential 
@@ -76,7 +81,7 @@ guysfish
 
 In these inferential results the P value is 2.364e-12 which is a very small number. This means that these results are not likely to occur at random.
 
-The observed results show that there is a significant difference between whether or not males are getting Covid if they are vaccinated or not. 245 of those who got the placebo got Covid while only 113 males who got vaccinated got Covid. The expected results suggested that these numbers would be close but in reality they aren't. This aligns with the previous data we saw being that the vaccine does have a positive affect on males and lowers their chances of getting Covid. The odds ratio 2.17 is right in between the confidence interval 1.73-2.75.
+The observed results show that there is a significant difference between whether or not males are getting Covid if they are vaccinated or not. 245 of those who got the placebo got Covid while only 113 males who got vaccinated got Covid. The expected results suggested that these numbers would be close but in reality they aren't. This aligns with the previous data we saw being that the vaccine does have a positive affect on males and lowers their chances of getting Covid. The odds ratio 2.17 is right in between the confidence interval 1.73-2.75 meaning that my hypothesis is correct.
 
 
 ```{r}
@@ -101,7 +106,7 @@ barchartGC(~infected + treatment,data=gal, type="percent")
 
 ```
 
-From the percent data we can see that gals had a higher chance of getting Covid if vaccinated in compared to the women who received the placebo. About 56% of vaccinated women got Covid while about 45% of placebo participates got Covid. The percent and frequency of women who were okay was relatively the same regardless if they were vaccinated or not. The frequency of women who were vaccinated and got Covid was slightly larger (about 200) than those who got the placebo (about 100).
+From the percent data we can see that gals had a higher chance of getting Covid if vaccinated in compared to the women who received the placebo. About 56% of vaccinated women got Covid while about 45% of placebo participates got Covid. The percent and frequency of women who were okay was relatively the same regardless if they were vaccinated or not. The frequency of women who were vaccinated and got Covid was slightly larger (about 200) than those who got the placebo (about 100). Women who got vaccinated got Covid more than those who got the placebo.
 
 
 ### Numerical results
@@ -124,9 +129,9 @@ galsfish <- fisher.test(table1)
 galsfish
 ```
 
-From the inferential results the p value is 0.005 which is small meaning that the expected results are very unlikely to happen.
+From the inferential results the p value is 0.005 which is small meaning that the expected results are unlikely to happen.
 
-The observed results show us that 155 women who got the placebo ended up getting Covid while 207 women who were vaccinated got Covid. The expected results were supposed to be an even amount of both sides were going to contract Covid. The odds ratio in the Fisher test is 0.74 which is almost exactly in between the confidence interval which is 0.60-0.92. This all aligns with the data from the pervious charts.
+The observed results show us that 155 women who got the placebo ended up getting Covid while 207 women who were vaccinated got Covid. The expected results were supposed to be an even amount of both sides were going to contract Covid. The odds ratio in the Fisher test is 0.74 which is almost exactly in between the confidence interval which is 0.60-0.92. This all aligns with the data from the previous charts.
 
 ```{r}
 effect <- galsfish$p.value/(galsfish$p.value +1)
@@ -156,7 +161,7 @@ barchartGC(~infected + treatment,data=gay, type="percent")
 
 ```
 
-From the percent bar plot we can see that gays that got vaccinated have gotten Covid significantly more than those who got the placebo. About 90% of vaccinated gays got Covid while about 15% on placebo gays got Covid. In regards to those who were "OK" and vaccinated were slightly more than those who got the placebo. The frequency at which placebo gays got Covid is very small compared to those who were vaccinated. In regards to those who were "OK" the vaccinated people were slightly higher than those who were not.
+From the percent bar plot we can see that gays that got vaccinated also got Covid significantly more than those who got the placebo. About 90% of vaccinated gays got Covid while about 15% on placebo gays got Covid. In regards to those who were "OK", the vaccinated % was slightly more than those who got the placebo. The frequency at which placebo gays got Covid is very small compared to those who were vaccinated. In regards to those who were "OK" the vaccinated people were slightly higher than those who were not. Gays who got vaccinated are more likely to get covid.
 
 
 ### Numerical results
@@ -232,7 +237,7 @@ drugfish
 ```
 
 
-In these inferential results the p value is 3e-07 which is very small number. This means that the expected results of 29 out of 1206 placebo and 31 out of 1294 vaccinated people getting Covid is unlikely to happen. The observed counts shows that 10 out 1225 placebo participates got Covid while 50 out of 1275 vaccinated people got Covid. The odds ratio in the Fisher test is 0.21 which is in the middle of the confidence interval as the first few subcategories.
+In these inferential results the p value is 3e-07 which is very small number. This means that the expected results of 29 out of 1206 placebo and 31 out of 1294 vaccinated people getting Covid is unlikely to happen. The observed counts shows that 10 out 1225 placebo participates got Covid while 50 out of 1275 vaccinated people got Covid. The odds ratio in the Fisher test is 0.21 which is in the middle of the confidence interval as the first two subcategories.
 
 
 ```{r}
@@ -253,7 +258,7 @@ For this vaccine to be effective for drug users the effectiveness confidence int
 
 # Overall Results and Conclusions
 
-After analyzing all of the data for guys, gals, gays and drug users only guys have seen effectiveness in getting the vaccine and not getting Covid. The vaccine is not effective for gals, gays and drug users. Below I have ranked each group and the vaccine effectiveness.
+After analyzing all of the data for guys, gals, gays and drug users only guys had seen effectiveness in getting the vaccine to not get Covid. The vaccine is not effective for gals, gays and drug users. Below I have ranked each group and the vaccine effectiveness.
 
 Vaccine effectiveness:
 1) Guys 63.4 to 73.35
