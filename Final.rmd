@@ -222,14 +222,41 @@ colPerc(table1)
 According to the numerical results we are seeing the same trend. In regards to the placebo drug users 17 got Covid while 49 are "OK". In regards to the vaccinated drug users 83 got Covid while 51 were "OK".  Placebo vaccine drug users got Covid 0.81% of the time compared to  99.19% were "OK". Vaccinated drug users got Covid 3.8% of the time compared to 96.2% that were "OK". We are continuing to see that vaccinated drug users are more likely to get Covid compared to placebo participants.
 
 
+### Inferential 
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+drugfish <- fisher.test(table1)
+drugfish
+```
 
 
+In these inferential results the p value is 3e-07 which is very small number. This means that the expected results of 29 out of 1206 placebo and 31 out of 1294 vaccinated people getting Covid is unlikely to happen. The observed counts shows that 10 out 1225 placebo participates got Covid while 50 out of 1275 vaccinated people got Covid. The odds ratio in the Fisher test is 0.21 which is in the middle of the confidence interval as the first few subcategories.
 
 
+```{r}
+effect <- drugfish$p.value/(drugfish$p.value +1)
+effectivenessdrug = drugfish$estimate/(drugfish$estimate +1)*100
+print(effectivenessdrug)
+```
 
+```{r}
+low=(drugfish$conf.int[1]/(drugfish$conf.int[1] +1))*100
+hi=(drugfish$conf.int[2]/(drugfish$conf.int[2] +1))*100
+options(digits=2)
+```
 
+## Effectiveness Confidence Interval `r low`  to `r hi`
 
+For this vaccine to be effective for drug users the effectiveness confidence interval must be over 50%. For drug users the effectiveness of the vaccine is 8.57 to 29.47 which means that it is not effective. 
 
 # Overall Results and Conclusions
 
+After analyzing all of the data for guys, gals, gays and drug users only guys have seen effectiveness in getting the vaccine and not getting Covid. The vaccine is not effective for gals, gays and drug users. Below I have ranked each group and the vaccine effectiveness.
 
+Vaccine effectiveness:
+1) Guys 63.4 to 73.35
+2) Gals 37.34 to 47.86
+3) Drug user 8.57 to 29.47
+4) Gays 6.2 to 25.61
