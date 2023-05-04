@@ -33,10 +33,10 @@ A new  preventative vaccine (covid921) is under test in clinical trials. Given t
 
 # Coding details
 
-
-
-
-
+I changed the character variable from FinalData to factor Variables by using :
+FinalData<- FinalData %>%
+mutate(across(where(is.character), as.factor))
+Then I had to make sure that all the subcategories of guys, gals, gays and drug user separate so that they could be assessed individually. I stored them as separate values and this can be seen when the assignment is knitted. By separating them I was able to see if the vaccine was effective for each subcategory.
 
 
 ## Males
