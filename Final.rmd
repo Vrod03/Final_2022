@@ -201,6 +201,23 @@ If the effectiveness confidence interval is above 50% then we know that the vacc
 
 ## Druggies
 
+### Barplot
+
+```{r}
+barchartGC(~infected + treatment,data=Druguser)
+barchartGC(~infected + treatment,data=Druguser, type="percent")
+```
+
+In the percent plot the drug users that are vaccinated got Covid significantly more than those who got the placebo. About 85% of vaccinated drug uses got Covid while about 18% of placebo drug users got Covid. Those who were "OK" are relatively close in regards to whether or not they got the vaccine or not (vaccinated slightly more). In the frequency plot those who were vaccinated are 3-4x more likely to get Covid compared to placebo participants. Vaccinated people are slightly more "OK" compared to placebo drug users.
+
+
+### Numerical results
+
+```{r}
+table1 <- xtabs(~infected + treatment, data= Druguser)
+rowPerc(table1)
+colPerc(table1)
+```
 
 
 
